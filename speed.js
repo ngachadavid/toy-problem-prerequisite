@@ -1,16 +1,26 @@
-function speedDetector (speed) {
-    let speedDetector = parseInt(speed, 10);
-    if (speed < 70) {
-        return Ok
+const readline = require('readline');
+const input = readline.createInterface(
+    {
+        input: process.stdin,
+        output: process.stdout
+    }
+);
+
+input.question("Speed of the car: ",
+function (speed){
+    let speedOfCar = parseInt(speed, 10);
+    if (speedOfCar < 70) {
+        process.stdout.write("Ok\n");
     }
     else{
-        const demeritPoints = ((speed - 70) / 5);
+        const demeritPoints = ((speedOfCar - 70) / 5);
         Math.ceil(demeritPoints);
-        return `points: ${demeritPoints}!`;
+        process.stdout.write(`points: ${demeritPoints}\n!`);
         if (demeritPoints >= 12) {
-            return `License suspended.`
+            process.std.out.write(`License suspended.\n`)
         } else {
-            return 0
+            process.exit(0);
         }
     }
-}
+    input.close();
+});
